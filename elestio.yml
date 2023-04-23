@@ -18,6 +18,8 @@ environments:
     value: "[PIPELINE_NAME]"
   - key: "DOMAIN"
     value: "[CI_CD_DOMAIN]"
+  - key: "IP"
+    value: "[IP]"
 
 config:
   runTime: "dockerCompose"
