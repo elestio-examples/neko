@@ -28,27 +28,19 @@ services:
     environment:
       - "TZ=Europe/Vienna"
       - "NEKO_ROOMS_EPR=59000-59049"
-      - "NEKO_ROOMS_NAT1TO1=167.235.233.26" # IP address of your server
-      - "NEKO_ROOMS_TRAEFIK_DOMAIN=${DOMAIN}" # traefik domain (name of the service)
+      - "NEKO_ROOMS_NAT1TO1=${IP}"
+      - "NEKO_ROOMS_TRAEFIK_DOMAIN=${DOMAIN}"
       - "NEKO_ROOMS_TRAEFIK_ENTRYPOINT=websecure"
       - "NEKO_ROOMS_TRAEFIK_NETWORK=neko-rooms-traefik"
-      # - "NEKO_ROOMS_INSTANCE_URL=https://${DOMAIN}/" # external URL
-      - "NEKO_ROOMS_STORAGE_INTERNAL=/neko-data"
-      - "NEKO_ROOMS_STORAGE_EXTERNAL=/neko-data/storage"
+      - "NEKO_ROOMS_STORAGE_ENABLED=true"
+      - "NEKO_ROOMS_STORAGE_INTERNAL=/data"
+      - "NEKO_ROOMS_STORAGE_EXTERNAL=/opt/app/${PIPELINE_NAME}/neko-data"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - /neko-rooms-media:/data
-      # - ./data/docker:/var/lib/docker
+      - ./neko-data:/data
+      - ./neko-data:/var/lib/docker
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.neko-rooms-frontend.loadbalancer.server.port=8080"
       - "traefik.http.routers.neko-rooms.entrypoints=websecure"
-      - "traefik.http.routers.neko-rooms.rule=Host(`${DOMAIN}`)" # traefik domain (name of the service)
-
-volumes:
-  neko-rooms-media:
-    driver: local
-    driver_opts:
-      type: none
-      device: ${PWD}/neko-data
-      o: bind
+      - "traefik.http.routers.neko-rooms.rule=Host(`${DOMAIN}`)"

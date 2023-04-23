@@ -13,5 +13,5 @@ Deploy Neko Rooms server with CI/CD on Elestio
 You can open Neko Rooms web UI here:
 
     https://[CI_CD_DOMAIN]/
-    Login: [ADMIN_EMAIL]
+    Login: root
     password: [ADMIN_PASSWORD]
