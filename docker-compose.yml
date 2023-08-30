@@ -23,7 +23,7 @@ services:
       - "172.17.0.1:7097:8080"
 
   neko-rooms:
-    image: "m1k1o/neko-rooms:latest"
+    image: "m1k1o/neko-rooms:${SOFTWARE_VERSION_TAG}"
     restart: "always"
     environment:
       - "TZ=Europe/Vienna"
