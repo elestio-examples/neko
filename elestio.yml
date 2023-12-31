@@ -15,7 +15,7 @@ environments:
   - key: "ADMIN_PASSWORD"
     value: "random_password"
   - key: "PIPELINE_NAME"
-    value: "[PIPELINE_NAME]"
+    value: "[PIPELINE_NAME]/"
   - key: "DOMAIN"
     value: "[CI_CD_DOMAIN]"
   - key: "IP"
