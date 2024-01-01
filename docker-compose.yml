@@ -34,7 +34,7 @@ services:
       - "NEKO_ROOMS_TRAEFIK_NETWORK=neko-rooms-traefik"
       - "NEKO_ROOMS_STORAGE_ENABLED=true"
       - "NEKO_ROOMS_STORAGE_INTERNAL=/data"
-      - "NEKO_ROOMS_STORAGE_EXTERNAL=/opt/app/${PIPELINE_NAME}neko-data"
+      - "NEKO_ROOMS_STORAGE_EXTERNAL=/opt/app/${DIR_NAME}neko-data"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - ./neko-data:/data
